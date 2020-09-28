@@ -18,9 +18,9 @@ namespace ListExercice
             _myList.Add(1);
             _myList.RemoveAt(5);
 
-            for (int i = 0; i < _myList.Count; i++)
+            foreach  (int _index in _myList)
             {
-                Console.WriteLine( _myList[i]);               
+                Console.WriteLine(_index);
             }
             Console.ReadLine();
         }

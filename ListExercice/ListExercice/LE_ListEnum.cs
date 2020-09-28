@@ -7,32 +7,39 @@ using System.Threading.Tasks;
 
 namespace ListExercice
 {
-    //class LE_ListEnum<T> : IEnumerator
-    //{
-    //    public T[] myListEnum = new T[0];
-    //    int position = -1;
+    public class LE_ListEnum<T> : IEnumerator
+    {
+        public T[] mylistenum = new T[0];
+        int position = -1;
+        public T Current
+        {
+            get
+            {
+                return mylistenum[position];
+            }
+        }
+        object IEnumerator.Current
+        {
+            get
+            {
+                return Current;
+            }
+        }
 
-    //    public object IEnumerator.Current
-    //    {
-    //        get
-    //        {
-    //            return Current;
-    //        }
-    //    }
-    //    public LE_List Current
-    //    {
+        public LE_ListEnum(T[] _list)
+        {
+            mylistenum = _list;
+        }
 
-    //    }
+        public bool MoveNext()
+        {
+            position++;
+            return (position < mylistenum.Length);
+        }
 
-    //    public bool MoveNext()
-    //    {
-    //        position++;
-    //        return (position < myListEnum.Length);
-    //    }
-
-    //    public void Reset()
-    //    {
-    //        position = -1;
-    //    }
-    //}
+        public void Reset()
+        {
+            position = -1;
+        }
+    }
 }

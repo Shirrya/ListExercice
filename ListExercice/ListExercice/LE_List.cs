@@ -32,17 +32,19 @@ namespace ListExercice
 
         public void RemoveAt(int _index)
         {
-            IsValid(_index);
-            T[] _temp = new T[Count - 1];
-            for (int i = 0; i < _index; i++)
+            if(IsValid(_index))
             {
-                _temp[i] = myList[i];
+                T[] _temp = new T[Count - 1];
+                for (int i = 0; i < _index; i++)
+                {
+                    _temp[i] = myList[i];
+                }
+                for (int i = _index+1; i < Count; i++)
+                {
+                    _temp[i-1] = myList[i];
+                }
+                myList = _temp;
             }
-            for (int i = _index+1; i < Count; i++)
-            {
-                _temp[i-1] = myList[i];
-            }
-            myList = _temp;
         }
 
         public T ValueAt(int _index)
@@ -66,7 +68,7 @@ namespace ListExercice
 
         public IEnumerator GetEnumerator()
         {
-            throw new NotImplementedException();
+            return new LE_ListEnum<T>(myList);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
